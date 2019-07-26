@@ -137,6 +137,13 @@
     :file="selectedFiles[0]" 
     :context="context">
   </pdf>
+  <web-viewer
+    v-if="showWebViewer"
+    v-on:hide-pdf-viewer="showWebViewer = false"
+    :file="selectedFiles[0]"
+    :context="context"
+    :currentDir="currentDir">
+  </web-viewer>
   <text-viewer 
     v-if="showTextViewer" 
     v-on:hide-text-viewer="showTextViewer = false"

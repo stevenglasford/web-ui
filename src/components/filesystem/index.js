@@ -32,6 +32,7 @@ module.exports = {
             showSocial:false,
             showHexViewer:false,
             showPdfViewer:false,
+            showWebViewer:false,
             showTextViewer:false,
             showPassword:false,
             showRequestSpace:false,
@@ -850,9 +851,12 @@ module.exports = {
 		var that = this;
 		this.confirmView(file, () => {that.showGallery = true;});
 	    } else if (mimeType === "text/plain") {
-		this.showTextViewer = true;
+		    //this.showTextViewer = true;
+		    this.showWebViewer = true;
 	    } else if (mimeType === "application/pdf") {
 		this.showPdfViewer = true;
+	    } else if (mimeType === "text/html") {
+    		this.showWebViewer = true;
 	    } else {
 		this.showHexViewer = true;
 	    } 

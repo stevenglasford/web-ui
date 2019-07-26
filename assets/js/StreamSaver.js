@@ -42,7 +42,7 @@
     // Was first enabled in chrome v73
   }
 
-  function createWriteStream (filename, mimeType, urlCallback, seekCallback, queuingStrategy, size) {
+  function createWriteStream (filename, mimeType, urlCallback, seekCallback, queuingStrategy, size, fileDataCallback) {
     // normalize arguments
     if (Number.isFinite(queuingStrategy)) {
       [size, queuingStrategy] = [queuingStrategy, size]
@@ -77,6 +77,8 @@
 
           channel.port1.onmessage = null
           */
+        } else if (evt.data.filePath) {
+            fileDataCallback(evt.data.filePath)
         } else if (evt.data.seekLength) {
             seekCallback(evt.data.seekHi, evt.data.seekLo, evt.data.seekLength)
         }
